@@ -1,0 +1,6 @@
+*.log
+*.aux
+*.class
+*.pyc
+./programmed/Assignment10/*
+
