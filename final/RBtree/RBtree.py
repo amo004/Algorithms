@@ -2,16 +2,38 @@ import graphviz as gz
 import imageio as io
 
 
+"""
+    Author: Andrew Osborne 
 
-#   Properties of Red-Black Trees
-#       Every node is red or black
-#       every leaf (None) is black
-#       The root is black
-#       if a node is red, all both of its children are black
-#       All simple paths from some node to some leaf contain
-#            the same number of black nodes 
+    This file implements a red black tree with insertion and
+    deletion. I have created this because none of the things
+    I found online agreed with Cormen's algorithm and therefore
+    were not good learning tools for this course.
+    
+    I am using graphviz to draw images representing trees,
+    and I was able to install it with 
+
+    sudo apt install python3-graphviz
+
+    I have written some code which will take all of teh 
+    generated images and sew them together in to a gif,
+    but it didn't work well because of how graphviz
+    handles image sizes. That code is inside
+    animate and is the only thing that uses imageio,
+    so you can omit that dependency if you don't care to
+    try it.
+
+    Properties of Red-Black Trees
+      Every node is red or black
+      every leaf (None) is black
+      The root is black
+      if a node is red, all both of its children are black
+      All simple paths from some node to some leaf contain
+        the same number of black nodes 
+"""
 
 class Node:
+    # Graphs are full of nodes. This is a node
     def __init__(self,key = None,parent = None):
         self.color = 'r'
         self.key = key
@@ -20,6 +42,24 @@ class Node:
         self.right = None
 
 class RBtree:
+    """
+        Okay, there is some wierdness afoot here, and I'll 
+        tell you why. python's None is a great flag in 
+        and of itself, but it throws errors when you 
+        try to access some member variable of None, 
+        and the algorithms in the text rely on the fact that
+        None.color = black, so I had to create a 'None'
+        value to use statically with this problem.
+
+        Other than that, almost everything is exactly as
+        in the text, even down to variable names and
+        stuff, except my code doesn't say 
+        "and the other statement is symmetric.. figure
+        it out"
+
+    """
+
+    # sentinel value
     NIL = Node()
     NIL.color = 'b'
 
@@ -28,36 +68,71 @@ class RBtree:
         self.root = RBtree.NIL
 
     def inOrder(self,x,A):
+        """
+        returns: None
+        modifies A by reference
+
+            in order traversal to create some
+            enumerable list from which to 
+            create a graph
+        """
         if x is RBtree.NIL: 
             return 
-        self.inOrder(x.left,A)
-        A.append(x)
-        self.inOrder(x.right,A)
+        self.inOrder(x.left,A) # left subtree
+        A.append(x) # self
+        self.inOrder(x.right,A) # right subtree
 
     def inOrderToString(self):
+        """
+            This is actually a misleading variable name.
+            This was created to do something other than 
+            what it ended up doing. This will take 
+            your graph and save it to a png file,
+            enumerating all `screenshots' of your 
+            graph so that you know what happened 
+            in what order
+        """
+
+        # used to store a list of nodes
         A = []
+
+        # get that list of nodes
         self.inOrder(self.root,A)
+
+        # this is the part that uses graphviz
+        #              name           tempfile    file_format
         G = gz.Digraph("RBT",filename='temp.gv',format='png')
-        # G.format = "png"
+        # if it is unclear what this does, run it one time
+        # and you will see
+
+        
+        # what color is a given node?
         for node in A:
             if node.color == 'r':
                 col = 'red'
             else:
                 col = 'lightgrey'
-
+            
+            # add vertices to graph and give them labels
             G.node("n" + str(node.key),style='filled',color=col,label = str(node.key))
+
+        # draw the edges. You can modify this a bit to see the 
+        # graphs like in the text with the single leaf
         for node in A:
             if node.left is not RBtree.NIL:
                 G.edge("n" + str(node.key),"n" + str(node.left.key))
             if node.right is not RBtree.NIL:
                 G.edge("n" + str(node.key),"n" + str(node.right.key))
 
-        # G.view()
+        # make and save the picture
+        #        start_all_files_with   render_at_runtime, delete i
         G.render(filename = "RBT" + str(self.n),view=False,cleanup=True)
+
+        # keep track of how many pictures saved
         self.n = self.n + 1
 
 
-
+    # this is trivial, and we beat it to death in class
     def Left_Rotate(self, x):
         y = x.right
         x.right = y.left
@@ -95,6 +170,7 @@ class RBtree:
         x.p = y
 
 
+    #FIX got here, finish commenting
     def RB_Insert_Fixup(self,z):
         while z.p.color == 'r':
             if z.p == z.p.p.left:
