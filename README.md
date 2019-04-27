@@ -1,30 +1,27 @@
 I, Andrew Osborne, am releasing all of this code on the 
 do whatever you want license, and I'm trusting you guys not 
 to make this a disaster. 
-
 I have asked Dr. Li about this and he has no issue with it.
-
-
 Now, for the information that you care about...
 
-#Programmed
+# Programmed
 
 This directory contains my solutions to the programmed assignment.
 The tenth assignment has been omitted because it has not been turned in
 yet. I have also included my .tex files and my pdf reports.
 
-#Written
+# Written
 
 Okay, this is also pretty obvious. This contains my solutions to all
 of the written homeworks (pdf and tex files again).
 
-#exam1
+# exam1
 
 This directory has implementations of (almost) everything we covered up to 
 the first exam. I sent this around in an email to the class shortly beforehand
 and some people seemed to find it useful.
 
-#final
+# final
 
 okay, this is under construction. I have so far implemented a red black tree 
 with insertion and deletion that draws images of insertion and deletion
