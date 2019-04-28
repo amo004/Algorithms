@@ -3,7 +3,19 @@ import os
 import queue
 import imageio as io
 import graphviz as gz
+"""
+This file implements breadth-first search
+on a randomly generated directed graph,
+and creates a bunch of png images which
+are sewn into a good-looking gif.
 
+Red edges in the gif denote parental edges,
+and the nodes are labeled by discovery time 
+
+as is readily apparent above, you need graphviz
+to make this work.
+
+"""
 def BFS(G,s):
     time = 0
     s.d = 0
@@ -27,19 +39,24 @@ def BFS(G,s):
     animate(cnt)
     
 def animate(cnt):
+    # take all of the generated images and make a gif
     ims = []
     for x in range(0,cnt+1):
         ims.append(io.imread("BFS" + str(x) + ".png"))
+
+    # increase this number to make the gif
+    # move more slowly
     kwargs = {'duration':1}
     io.mimsave("rbt.gif",ims,**kwargs)
     
+    # delete all of the png files you generated
     mydir = '.'
     filelist = [ f for f in os.listdir(mydir) if f.endswith(".png") ]
     for f in filelist:
         os.remove(os.path.join(mydir, f))
     
 def view(graph,n):
-    
+    # generate a png of the current state of the graph 
     G = gz.Digraph("DFS",filename="temp.gv",format="png")
     
     colors = {'w':'azure','b':'darkslategrey','g':'lightgrey'}

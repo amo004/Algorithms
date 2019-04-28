@@ -39,6 +39,8 @@ Information about dependencies should be stored in file headers, but I am lazy a
 is informal, so I don't feel too bad if I missed something. If you notice any errors,
 I'll fix them.
 
+![alt text](https://github.com/amo004/Algorithms/blob/master/final/GraphSearch/rbt.gif)
+
 Thanks
 
 
