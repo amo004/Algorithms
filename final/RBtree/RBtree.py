@@ -170,8 +170,8 @@ class RBtree:
         x.p = y
 
 
-    #FIX got here, finish commenting
     def RB_Insert_Fixup(self,z):
+        # modifies tree and fixes in accordance with the text
         while z.p.color == 'r':
             if z.p == z.p.p.left:
                 y = z.p.p.right
@@ -354,10 +354,16 @@ class RBtree:
             self.RB_Delete_Fixup(x)
 
     def animate(self):
+        """
+            This will pool all of the generated
+            png images and make a gif, but it 
+            doesn't look great, so I'm not using
+            it in the main call
+        """
         ims = []
         for x in range(0,self.n):
             ims.append(io.imread("RBT" + str(x) + ".png"))
-            io.mimsave("rbt.gif",ims)
+        io.mimsave("rbt.gif",ims)
 
 if __name__ == "__main__":
     T = RBtree()
