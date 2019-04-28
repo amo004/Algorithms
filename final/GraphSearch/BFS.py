@@ -47,7 +47,7 @@ def animate(cnt):
     # increase this number to make the gif
     # move more slowly
     kwargs = {'duration':1}
-    io.mimsave("rbt.gif",ims,**kwargs)
+    io.mimsave("bfs.gif",ims,**kwargs)
     
     # delete all of the png files you generated
     mydir = '.'
@@ -57,7 +57,7 @@ def animate(cnt):
     
 def view(graph,n):
     # generate a png of the current state of the graph 
-    G = gz.Digraph("DFS",filename="temp.gv",format="png")
+    G = gz.Digraph("BFS",filename="temp.gv",format="png")
     
     colors = {'w':'azure','b':'darkslategrey','g':'lightgrey'}
     for node in graph.V:

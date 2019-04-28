@@ -4,24 +4,26 @@ to make this a disaster.
 I have asked Dr. Li about this and he has no issue with it.
 Now, for the information that you care about...
 
-# Programmed
+# Completed stuff
+
+## Programmed
 
 This directory contains my solutions to the programmed assignment.
 The tenth assignment has been omitted because it has not been turned in
 yet. I have also included my .tex files and my pdf reports.
 
-# Written
+## Written
 
 Okay, this is also pretty obvious. This contains my solutions to all
 of the written homeworks (pdf and tex files again).
 
-# exam1
+## exam1
 
 This directory has implementations of (almost) everything we covered up to 
 the first exam. I sent this around in an email to the class shortly beforehand
 and some people seemed to find it useful.
 
-# final
+## final
 
 okay, this is under construction. I have so far implemented a red black tree 
 with insertion and deletion that draws images of insertion and deletion
@@ -39,8 +41,12 @@ Information about dependencies should be stored in file headers, but I am lazy a
 is informal, so I don't feel too bad if I missed something. If you notice any errors,
 I'll fix them.
 
-![alt text](https://github.com/amo004/Algorithms/blob/master/final/GraphSearch/rbt.gif)
 
-Thanks
+# Breadth first search example animation
+![alt text](https://github.com/amo004/Algorithms/blob/master/final/GraphSearch/bfs.gif)
+
+# Depth first search example animation
+![alt text](https://github.com/amo004/Algorithms/blob/master/final/GraphSearch/dfs.gif)
+
 
 
