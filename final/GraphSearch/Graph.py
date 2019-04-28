@@ -3,6 +3,13 @@ import random as r
 import graphviz as gz
 import imageio as io
 
+"""
+This implements the framework datastructure that I use 
+to complete graph algorithms. Not all of these algorithms
+use all of these facilities
+"""
+
+
 class Node:
 
     def __init__(self,label):
@@ -15,10 +22,16 @@ class Node:
 class Graph:
 
     def __init__(self):
+        # used to store Node objects which are vertices in our list
         self.V = []
+
+        # store a (shallow) copy of self.V[j] in self.adj[i]
+        # to add an edge from verted i to vertex j
         self.adj = []
 
     def addNode(self):
+        # add a node to self.V..
+        # note that we must add nodes before edges
         sz = len(self.V)
         self.V.append(Node(sz))
         self.adj.append([])
@@ -29,6 +42,8 @@ class Graph:
             self.adj[source].append(self.V[dest])
 
     def populate(self):
+        # create a random graph with ten vertices
+        # and some number of edges
         for i in range(0,10):
             self.addNode()
         for i in range(0,10):
