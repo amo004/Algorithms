@@ -24,7 +24,7 @@ class Graph:
     def __init__(self):
         # used to store Node objects which are vertices in our list
         self.V = []
-
+        self.w = None
         # store a (shallow) copy of self.V[j] in self.adj[i]
         # to add an edge from verted i to vertex j
         self.adj = []
@@ -36,10 +36,14 @@ class Graph:
         self.V.append(Node(sz))
         self.adj.append([])
         
-    def addEdge(self,source,destinations):
-        
+    def addEdge(self,source,destinations,weights=None):
+        if self.w is None and weights is not None:
+            self.w = [[0]*len(self.V)]*len(self.V)
+
         for dest in destinations:
             self.adj[source].append(self.V[dest])
+            if weights is not None:
+                self.w
 
     def populate(self):
         # create a random graph with ten vertices
@@ -53,3 +57,4 @@ class Graph:
                     A.append(j)
             self.addEdge(i,A)
 
+    
