@@ -6,6 +6,15 @@ Now, for the information that you care about...
 
 # Completed stuff
 
+## A couple notes on compatibility
+
+1. I wrote all of this code in python3.6 and I doubt it  will work on python 2.(whatever). About that.. Python 2 is outdated.. like racism or something. Stop using it.
+
+2. The majority of my visualization stuff depends on `imageio` and `graphviz` which are two packages in Ubuntu repositories as `python3-imagio` and `python3-graphviz`.
+
+3. I also have to do some minor file management to make the `.gif` images and because of this, I doubt that feature will work on MS machines, though I suspect only minimal modifications would be needed to make that work.. If you wanted to help, you could fork this repo and ensure compatibility in some Win10 dev enviroment. 
+
+
 ## Programmed
 
 This directory contains my solutions to the programmed assignment.
