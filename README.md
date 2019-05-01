@@ -58,4 +58,5 @@ I'll fix them.
 ![alt text](https://github.com/amo004/Algorithms/blob/master/final/GraphSearch/dfs.gif)
 
 
-
+# Prim's algorithm example animation
+![alt text](https://github.com/amo004/Algorithms/blob/master/final/GraphSearch/mst.gif)
