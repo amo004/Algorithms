@@ -82,7 +82,7 @@ class RBtree:
         A.append(x) # self
         self.inOrder(x.right,A) # right subtree
 
-    def inOrderToString(self):
+    def inOrderToString(self,order=None,wk=None):
         """
             This is actually a misleading variable name.
             This was created to do something other than 
@@ -112,9 +112,13 @@ class RBtree:
                 col = 'red'
             else:
                 col = 'lightgrey'
-            
+            if node.key == wk:
+                lw = 'w'
+            else:
+                lw = ''
+
             # add vertices to graph and give them labels
-            G.node("n" + str(node.key),style='filled',color=col,label = str(node.key))
+            G.node("n" + str(node.key),style='filled',color=col,label = str(node.key)+lw)
 
         # draw the edges. You can modify this a bit to see the 
         # graphs like in the text with the single leaf
@@ -126,7 +130,12 @@ class RBtree:
 
         # make and save the picture
         #        start_all_files_with   render_at_runtime, delete i
-        G.render(filename = "RBT" + str(self.n),view=False,cleanup=True)
+        if order is not None:
+            pt = "_" + str(order)
+        else:
+            pt = ""
+
+        G.render(filename = "RBT" + str(self.n)+pt,view=False,cleanup=True)
 
         # keep track of how many pictures saved
         self.n = self.n + 1
@@ -253,25 +262,25 @@ class RBtree:
                     x.p.color = 'r'
                     self.Left_Rotate(x.p)
                     w = x.p.right
-                    self.inOrderToString()
+                    self.inOrderToString(1,w.key)
                 if w.left.color == 'b' and w.right.color == 'b':
                     w.color = 'r'
                     x = x.p
-                    self.inOrderToString()
+                    self.inOrderToString(2,w.key)
                 else:
                     if w.right.color == 'b':
                         w.left.color = 'b'
                         w.color='r'
                         self.Right_Rotate(w)
                         w = x.p.right
-                        self.inOrderToString()
+                        self.inOrderToString(3,w.key)
                     w.color = x.p.color
                     x.p.color = 'b'
                     w.right.color = 'b'
+                    self.inOrderToString(4,w.key)
                     self.Left_Rotate(x.p)
-                    self.inOrderToString()
                     x = self.root
-                    self.inOrderToString()
+                    self.inOrderToString(5,w.key)
             else:
                 w = x.p.left
                 if w.color == 'r':
@@ -279,28 +288,28 @@ class RBtree:
                     x.p.color = 'r'
                     self.Right_Rotate(x.p)
                     w = x.p.left
-                    self.inOrderToString()
-                    self.inOrderToString()
+                    self.inOrderToString(6,w.key)
                 if w.right.color == 'b' and w.left.color == 'b':
                     w.color = 'r'
                     x = x.p
-                    self.inOrderToString()
+                    self.inOrderToString(7,w.key)
                 else:
                     if w.left.color == 'b':
                         w.right.color = 'b'
                         w.color='r'
                         self.Left_Rotate(w)
                         w = x.p.left
-                        self.inOrderToString() 
+                        self.inOrderToString(8,w.key) 
                     w.color = x.p.color
                     x.p.color = 'b'
                     w.left.color = 'b'
+                    self.inOrderToString(9,w.key)
                     self.Right_Rotate(x.p)
                     x = self.root
-                    self.inOrderToString()
+                    self.inOrderToString(10,w.key)
 
         x.color = 'b'
-        self.inOrderToString()
+        self.inOrderToString(11)
 
     def Tree_Minimum(self,x):
         while x.left is not RBtree.NIL:
@@ -368,9 +377,12 @@ class RBtree:
 if __name__ == "__main__":
     T = RBtree()
     for x in range(0,10):
-        n = Node(key=x)
+        n = Node(key=10-x)
         T.RB_Insert(n)
+    # T.RB_Delete(3)
+    T.RB_Delete(8)
     T.RB_Delete(3)
-    T.RB_Delete(7)
+    # T.RB_Delete(6)
+    # T.RB_Delete(5)
     T.inOrderToString()
     # T.animate()
