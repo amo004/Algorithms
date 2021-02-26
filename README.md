@@ -2,7 +2,7 @@
 
 ## A couple notes on compatibility
 
-1. I wrote all of this code in python3.6 and I doubt it  will work on python 2.(whatever). About that.. Python 2 is outdated.. like racism or something. Stop using it.
+1. I wrote all of this code in python3.6 and I doubt it  will work on python 2.(whatever). About that.. Python 2 is outdated. Stop using it.
 
 2. The majority of my visualization stuff depends on `imageio` and `graphviz` which are two packages in Ubuntu repositories as `python3-imagio` and `python3-graphviz`.
 
