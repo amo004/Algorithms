@@ -1,10 +1,4 @@
-I, Andrew Osborne, am releasing all of this code on the 
-do whatever you want license, and I'm trusting you guys not 
-to make this a disaster. 
-I have asked Dr. Li about this and he has no issue with it.
-Now, for the information that you care about...
 
-# Completed stuff
 
 ## A couple notes on compatibility
 
